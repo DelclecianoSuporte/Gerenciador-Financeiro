@@ -1,0 +1,148 @@
+.data-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; 
+    margin-bottom: 30px;
+}
+
+.setinha {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.setinha:first-child {
+    margin-right: 10px;
+}
+
+.setinha:last-child {
+    margin-left: 10px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-header .dropdown {
+    margin-right: auto;
+}
+
+.card-header .input-group {
+    flex: 1;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.card-header .no-border {
+    border: none;
+    box-shadow: none;
+}
+
+.card-header > div:last-child {
+    margin-left: auto;
+}
+  
+.icone-lupa:active {
+    background-color: #e6f7ff;
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.botao-categoria-despesa {
+    background-color: purple;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px; 
+}
+
+.botao-categoria-despesa fa-icon {
+    font-size: 25px;
+    color: white;
+}
+
+.botao-categoria-receita {
+    background-color: blue;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px; 
+}
+
+.botao-categoria-receita fa-icon {
+    font-size: 25px;
+    color: white;
+}
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.transacao-historico {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.descricao-transacao {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.div-valor-historico {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+.valor-historico {
+    color: red;
+    font-weight: bold; 
+    font-size: 1.2em;
+}
+
+.status-historico {
+    color: #708090;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.titulo-transacao {
+    font-weight: bold; 
+}
+
+.categoria-transacao {
+    color: gray; 
+}
+
+
+.data-historico{
+    font-weight: bold;
+    font-size: 18px;
+    color: #708090;
+}
+
+.data-mes, .data-ano{
+    font-weight: bold;
+}
+

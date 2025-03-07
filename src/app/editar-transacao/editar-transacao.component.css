@@ -1,0 +1,64 @@
+.form-control {
+    width: 300px; 
+    font-size: 14px; 
+}
+
+select.form-control {
+    height: 35px;
+}
+
+.container {
+    max-width: 800px; 
+}
+
+.botao-editar {
+    background-color: red;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    margin: 0 auto; 
+    display: block; 
+    margin-top: 40px;
+}
+
+.botao-editar fa-icon {
+    font-size: 25px;
+    color: white;
+}
+
+.botao-editar:hover {
+    background-color: red; 
+    color: #e6f7ff; 
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+  
+.botao-editar:active {
+    background-color: #e6f7ff;
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.botao-voltar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem; 
+    padding: 0;
+    margin-right: 10px; 
+}
+
+.botao-excluir {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem; 
+    padding: 0;
+    margin-right: 10px; 
+}

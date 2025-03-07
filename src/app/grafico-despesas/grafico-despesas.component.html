@@ -1,0 +1,17 @@
+<div *ngIf="mensagemAviso; else grafico">
+  {{ mensagemAviso }}
+</div>
+<ng-template #grafico>
+  <div style="display: block;">
+    <h5 class="titulo-grafico">Despesas por Categoria</h5>
+    <ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="doughnutChartData"
+      [doughnut]="true"
+      [legend]="true"
+      [labels]="true">
+    </ngx-charts-pie-chart>
+  </div>
+</ng-template>
+  

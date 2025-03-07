@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between align-items-center p-2">
+    <div>
+        <button class="btn no-border" type="button" id="pagina-inicial" [routerLink]="['/']" data-bs-toggle="tooltip" data-bs-placement="top" title="Página Inicial">
+            <fa-icon [icon]="faHouse"></fa-icon>
+        </button>
+    </div>
+    <div>
+        <button class="btn no-border" type="button" id="pagina-transacao" [routerLink]="['/transacao']" data-bs-toggle="tooltip" data-bs-placement="top" title="Criar Transação">
+            <fa-icon [icon]="faBook"></fa-icon>
+        </button>
+    </div>
+    <div>
+        <button class="btn no-border" type="button" id="pagina-historico" [routerLink]="['/historico']"  data-bs-toggle="tooltip" data-bs-placement="top" title="Histórico">
+            <fa-icon [icon]="faList"></fa-icon>
+        </button>
+    </div>
+    <div>
+        <button class="btn no-border" type="button" id="pagina-informacoes" data-bs-toggle="tooltip" data-bs-placement="top" title="Informações">
+            <fa-icon [icon]="faInfo"></fa-icon>
+        </button>
+    </div>
+    <div>
+        <button class="btn no-border" type="button" id="pagina-github" data-bs-toggle="tooltip" data-bs-placement="top" title="GitHub">
+            <fa-icon [icon]="faGithub"></fa-icon>
+        </button>
+    </div>
+</div>

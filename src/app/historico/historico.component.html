@@ -1,0 +1,66 @@
+<div class="card">
+    
+    <div class="data-nav">
+        <button (click)="voltaMes()" class="setinha">
+            <fa-icon [icon]="faLessThan"></fa-icon> 
+        </button>
+        <span>
+            <span class="data-mes">{{ mesAtual }}</span> / <span class="data-ano">{{ anoAtual }}</span>
+        </span>
+        
+        <button (click)="avancaMes()" class="setinha">
+            <fa-icon [icon]="faGreaterThan"></fa-icon>
+        </button>
+    </div>
+
+
+    <div class="card-header d-flex justify-content-between align-items-center">
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ opcaoSelecionada ? opcaoSelecionada : 'Tipo de Transação' }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#" (click)="opcaoFoiSelecionada($event, 'Todas')">Todas as Transações</a></li>
+                <li><a class="dropdown-item" href="#" (click)="opcaoFoiSelecionada($event, 'Receitas')">Receitas</a></li>
+                <li><a class="dropdown-item" href="#" (click)="opcaoFoiSelecionada($event, 'Despesas')">Despesas</a></li>
+            </ul>
+        </div>
+
+        <div class="input-group" style="max-width: 300px;">
+            <input type="text" class="form-control rounded-input" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="button-search" [(ngModel)]="pesquisaPelaDescricao" (input)="PesquisarDescricao()">
+            <button class="btn no-border" type="button" id="button-search" style="margin-left: 10px;" (click)="ButaoDePesquisa()">
+              <fa-icon class="icone-lupa" [icon]="faMagnifyingGlass"></fa-icon>
+            </button>
+        </div>
+
+        <div>
+            <fa-icon [icon]="faEllipsisVertical"></fa-icon>
+        </div>
+    </div>
+
+    <div class="card-body" *ngFor="let transacao of transacoes">
+        <div class="semana-numero-historico">
+            <span class="data-historico">{{ formatarDataCompleta(transacao.data) }}</span>
+        </div>
+    
+        <div class="transacao-historico">
+            <button [routerLink]="['/editar', transacao.id]" class="no-border botao-categoria-{{ transacao.tipo === 'Receita' ? 'receita' : 'despesa' }}">
+                <fa-icon [icon]="mostraIconePorCategoria(transacao.categoria)"></fa-icon>
+            </button>
+            <div class="descricao-transacao">
+                <span class="titulo-transacao">{{ transacao.descricao }}</span>
+                <span class="categoria-transacao">{{ transacao.categoria }}</span>
+            </div>
+            <div class="div-valor-historico ms-auto">
+                <span class="valor-historico">R$ {{ transacao.valor }}</span>
+                <span class="status-historico">{{ transacao.status_Transacao }}</span>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div class="rodape-historico">
+    <app-rodape></app-rodape>
+</div>
+

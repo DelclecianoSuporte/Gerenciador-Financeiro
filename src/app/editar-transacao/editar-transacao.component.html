@@ -1,0 +1,85 @@
+<div class="container mt-4">
+
+    <div class="card p-4">
+      <div class="d-flex align-items-center mb-4">
+        <button class="botao-voltar" [routerLink]="['/']">
+            <fa-icon [icon]="faArrowLeft"></fa-icon>
+        </button>
+        <h2 class="flex-grow-1 text-center m-0">Editar ou excluir</h2>
+        <button class="botao-excluir" (click)="confirmarExclusao()">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </div>
+
+      <form [formGroup]="transacaoForm">
+        <div class="mb-3">
+          <label for="tipo" class="form-label">Tipos</label>
+          <input formControlName="tipo" class="form-control" id="tipo-transacao" readonly />
+        </div>
+      
+        <div class="mb-3">
+          <label for="data-transacao" class="form-label">Data</label>
+          <input type="date" formControlName="data" class="form-control" id="data-transacao">
+        </div>
+      
+        <div class="mb-3">
+          <label for="valor-transacao" class="form-label">Valor</label>
+          <input type="number" formControlName="valor" class="form-control" id="valor-transacao">
+          <div class="invalid-feedback">
+          </div>
+        </div>
+      
+        <div class="mb-3">
+          <label for="descricao" class="form-label">Descrição</label>
+          <input type="text" formControlName="descricao" class="form-control" id="descricao-transacao">
+        </div>
+      
+        <div class="mb-3">
+          <label for="recorrente-transacao" class="form-label">Recorrente</label>
+          <input type="text" formControlName="recorrente" class="form-control" id="recorrente" readonly>
+        </div>
+        
+        <div class="mb-3" *ngIf="temQuantidadeParcelas()">
+          <label for="quantidadeParcelas" class="form-label">Quantidade de Parcelas</label>
+          <input type="text" formControlName="quantidadeParcelas" class="form-control" id="quantidadeParcelas" readonly>
+        </div>          
+      
+        <div class="mb-3">
+          <label for="status-transacao" class="form-label">Status</label>
+          <select formControlName="status" class="form-control" id="status-transacao">
+            <option value="" disabled selected>Selecione o status</option>
+            <option *ngFor="let status of statusEdicao" [value]="status">{{ status }}</option>
+          </select>
+        </div>
+      
+        <div class="mb-3">
+          <label for="categoria-transacao" class="form-label">Categoria</label>
+          <select formControlName="categoria" class="form-control" id="categoria-transacao">
+            <option value="" disabled selected>Selecione a categoria</option>
+            <option *ngFor="let categoria of categoriasBaseadasEmTipo" [value]="categoria">{{ categoria }}</option>
+          </select>
+        </div>
+      
+        <div class="mb-3">
+          <label for="formaPagamento-transacao" class="form-label">Forma de Pagamento</label>
+          <select formControlName="formaPagamento" class="form-control" id="formaPagamento-transacao">
+            <option value="" disabled selected>Selecione uma forma</option>
+            <option *ngFor="let formaPagamento of formasPagamentoEdicao" [value]="formaPagamento">{{ formaPagamento }}</option>
+          </select>
+        </div>
+        
+        <div style="text-align: center;">
+          <button class="botao-editar" [disabled]="!transacaoForm.valid" (click)="atualizarTransacao()">
+              <fa-icon [icon]="faCheck"></fa-icon>
+          </button>
+        </div>
+      </form>
+   </div>
+</div>
+
+<!-- <div class="rodape-transacao">
+    <app-rodape></app-rodape>
+</div> -->
+
+  
+  

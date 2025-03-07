@@ -1,0 +1,137 @@
+<div class="container mt-4">
+    
+    <div class="card p-4">
+        <div class="d-flex align-items-center mb-4">
+            <button class="botao-voltar" [routerLink]="['/']">
+                <fa-icon [icon]="faArrowLeft"></fa-icon>
+            </button>
+            <h2 class="flex-grow-1 text-center m-0">Nova Transação</h2>
+        </div>
+
+        <form>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipos</label>
+                <select id="tipo-transacao" name="tipo-transacao"
+                    class="form-control" 
+                    [class.is-invalid]="erros.tiposSelecionado"
+                    [(ngModel)]="tiposSelecionado" 
+                    (change)="atualizarCategorias($event)">
+                    <option value="" disabled selected>Selecione um tipo</option>
+                    <option *ngFor="let tipo of tiposTransacao" [value]="tipo">{{ tipo }}</option>
+                </select>
+                <div *ngIf="erros.tiposSelecionado" class="invalid-feedback">
+                    Por favor, selecione um tipo de transação.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="data-transacao" class="form-label">Data</label>
+                <input type="date" class="form-control" id="data-transacao" name="data-transacao" 
+                    [(ngModel)]="dataTransacao"
+                    [class.is-invalid]="erros.dataTransacao">
+                <div *ngIf="erros.dataTransacao" class="invalid-feedback">
+                    Por favor, selecione uma data.
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="valor-transacao" class="form-label">Valor</label>
+                <input type="number" class="form-control" id="valor-transacao" name="valor-transacao"
+                    [(ngModel)]="valorTransacao"
+                    [class.is-invalid]="erros.valorTransacao">
+                <div *ngIf="erros.valorTransacao" class="invalid-feedback">
+                    Por favor, informe um valor.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="descricao-transacao" name="descricao-transacao"
+                    [(ngModel)]="descricaoTransacao"
+                    [class.is-invalid]="erros.descricaoTransacao">
+                <div *ngIf="erros.descricaoTransacao" class="invalid-feedback">
+                    Por favor, informe uma descrição.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="status-transacao" class="form-label">Recorrente</label>
+                <select class="form-control" id="recorrente-transacao" name="recorrente-transacao" 
+                    [(ngModel)]="recorrente" 
+                    (change)="verificaRecorrencia($event)"
+                    [class.is-invalid]="erros.recorrente">
+                    <option value="" disabled selected>Selecione se existe recorrência</option>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                </select>
+                <div *ngIf="erros.recorrente" class="invalid-feedback">
+                    Por favor, selecione se existe recorrencia.
+                </div>
+            </div>
+            
+            <div class="mb-3" [ngStyle]="{ 'display': divQuantidadeParcelas ? 'block' : 'none' }">
+                <label for="quantidade-Parcelas" class="form-label">Quantidade de Parcelas</label>
+                <select class="form-control" id="quantidade-Parcelas" name="quantidade-Parcelas" 
+                    [(ngModel)]="quantidadeParcelas"
+                    [class.is-invalid]="erros.quantidadeParcelas">
+                    <option value="" disabled selected>Selecione a quantidade</option>
+                    <option *ngFor="let parcela of parcelas" [value]="parcela">{{ parcela }}</option>
+                </select>
+                <div *ngIf="erros.quantidadeParcelas" class="invalid-feedback">
+                    Por favor, selecione uma opção para a quantidade.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="status-transacao" class="form-label">Status</label>
+                <select class="form-control" id="status-transacao" name="status-transacao"  
+                    [(ngModel)]="statusTransacao"
+                    [class.is-invalid]="erros.statusTransacao">
+                    <option value="" disabled selected>Selecione o status</option>
+                    <option *ngFor="let status of opcoesStatus" [value]="status">{{ status }}</option>
+                </select>
+                <div *ngIf="erros.quantidadeParcelas" class="invalid-feedback">
+                    Por favor, selecione uma opção para o status.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="categoria-transacao" class="form-label">Categoria</label>
+                <select class="form-control" id="categoria-transacao" name="categoria-transacao"  
+                    [(ngModel)]="categoriaTransacao"
+                    [class.is-invalid]="erros.categoriaTransacao">
+                    <option value="" disabled selected>Selecione a categoria</option>
+                    <option *ngFor="let categoria of opcoesCategoria" [value]="categoria">{{ categoria }}</option>
+                </select>
+                <div *ngIf="erros.categoriaTransacao" class="invalid-feedback">
+                    Por favor, selecione uma categoria.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="formaPagamento-transacao" class="form-label">Forma de Pagamento</label>
+                <select class="form-control" id="formaPagamento-transacao" name="formaPagamento-transacao"  
+                    [(ngModel)]="formaPagamentoTransacao"
+                    [class.is-invalid]="erros.formaPagamentoTransacao">
+                    <option value="" disabled selected>Selecione uma forma</option>
+                    <option *ngFor="let formaPagamento of opcoesFormaPagamento" [value]="formaPagamento">{{ formaPagamento }}</option>
+                </select>
+                <div *ngIf="erros.formaPagamentoTransacao" class="invalid-feedback">
+                    Por favor, selecione uma forma de pagamento.
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <button class="botao-transacao" (click)="criarTransacao()">
+                    <fa-icon [icon]="faCheck"></fa-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="rodape-transacao">
+    <app-rodape></app-rodape>
+</div>
+
+  
+  

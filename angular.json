@@ -37,9 +37,13 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -102,5 +106,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2297ea98-52f7-4516-a874-8d839f89e64e"
   }
 }
