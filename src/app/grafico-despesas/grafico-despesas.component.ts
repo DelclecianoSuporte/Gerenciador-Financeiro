@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 import { TransacaoService } from '../services/transacao.service';
 import { Transacao } from '../models/transacao';
@@ -13,7 +13,7 @@ export class GraficoDespesasComponent implements OnChanges {
   @Input() mes: string | null = '';
   @Input() ano: number | null = 0;
 
-  view: [number, number] = [600, 250];
+  view: [number, number] = [700, 250];
 
   colorScheme: Color = {
     name: 'despesasScheme',
@@ -36,6 +36,27 @@ export class GraficoDespesasComponent implements OnChanges {
   mensagemAviso: string = '';
 
   constructor(private transacaoService: TransacaoService) { }
+
+  //Vou analisar como o grafico fica responsivo
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event: any): void {
+  //   this.atualizarTamanhoGrafico();
+  // }
+
+  // ngOnInit() {
+  //   this.atualizarTamanhoGrafico();
+  // }
+
+  // private atualizarTamanhoGrafico(): void {
+  //   const larguraTela = window.innerWidth;
+
+  //   if (larguraTela < 768) {
+  //     this.view = [window.innerWidth - 20, 200]; 
+  //   }
+  //   else {
+  //     this.view = [700, 250];
+  //   }
+  // }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['mes'] || changes['ano']) {

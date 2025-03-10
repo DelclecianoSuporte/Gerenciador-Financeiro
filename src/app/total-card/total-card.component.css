@@ -1,14 +1,3 @@
-/* talvez no celular fique legal .card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-} */
- 
-
 .card-header {
     margin-bottom: 16px;
 }
@@ -27,14 +16,6 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-
-/* .card-grafico {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
-} */
 
 .receitas, .despesas {
     display: flex;
@@ -132,6 +113,56 @@
 
 .tipo-transacao {
     margin-bottom: 0rem;
+}
+
+.data-completa {
+    display: inline;
+}
+
+.data-reduzida {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    
+    .data-nav {
+        font-size: 14px; 
+    }
+
+    .setinha {
+        font-size: 12px;
+        padding: 2px;
+    }
+
+    .data-completa {
+        display: none;
+    }
+
+    .data-reduzida {
+        display: inline;
+    }
+
+    .div-saldo-total {
+        margin-top: 10px;
+    }
+
+    /* cad body */
+    .card-body {
+        display: block;
+    }
+
+    .receitas, .despesas {
+        width: 100%; 
+        margin-bottom: 16px; 
+    }
+
+    .receitas:last-child, .despesas:last-child {
+        margin-bottom: 0;
+    }
+
+    .rodape-home {
+        background-color: transparent !important;
+    }
 }
 
 

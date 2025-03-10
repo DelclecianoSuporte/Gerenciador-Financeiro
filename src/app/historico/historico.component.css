@@ -146,3 +146,81 @@
     font-weight: bold;
 }
 
+
+.card-body:last-child {
+    margin-bottom: 45px; 
+}
+
+
+@media (max-width: 768px) {
+    .card-header {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .dropdown, .pesquisa-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .pesquisa-container {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .semana-numero-historico{
+        text-align: center;
+    }
+
+    span.titulo-transacao {
+        margin-left: -9px;
+    }
+
+    .transacao-historico {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icone-titulo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .icone-titulo button {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .transacao-historico .titulo-transacao,
+    .transacao-historico .categoria-transacao,
+    .transacao-historico .div-valor-historico {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .div-valor-historico {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .transacao-historico fa-icon {
+        font-size: 16px;
+    }
+}
+
+
+

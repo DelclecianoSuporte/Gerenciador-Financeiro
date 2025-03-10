@@ -102,6 +102,7 @@ export class HistoricoComponent implements OnInit {
         );
       }
 
+      transacoesFiltradas.sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime());
       this.transacoes = transacoesFiltradas;
     });
   }

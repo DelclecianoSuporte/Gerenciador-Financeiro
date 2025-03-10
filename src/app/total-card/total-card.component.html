@@ -4,11 +4,17 @@
             <button (click)="voltaMes()" class="setinha">
                 <fa-icon [icon]="faLessThan"></fa-icon> 
             </button>
-            <span>
+            
+            <span class="data-completa">
                 <span class="data-mes">{{ mesAnterior }}</span>
                 <span class="data-mes estado-atual">{{ mesAtual }}</span> / 
                 <span class="data-ano estado-atual">{{ anoAtual }}</span>
                 <span class="data-mes">{{ proximoMes }}</span>
+            </span>
+
+            <span class="data-reduzida">
+                <span class="data-mes estado-atual">{{ mesAtual }}</span> / 
+                <span class="data-ano estado-atual">{{ anoAtual }}</span>
             </span>
             
             <button (click)="avancaMes()" class="setinha">
