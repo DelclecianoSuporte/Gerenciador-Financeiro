@@ -6,6 +6,7 @@ import { CategoriaTransacao } from '../models/categoria-transacao.model';
 import { FormaPagamento } from '../models/forma-pagamento.model';
 import { Transacao } from '../models/transacao';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transacao',
@@ -44,6 +45,7 @@ export class TransacaoComponent implements OnInit {
   erros: any = {};
 
   constructor(private transacaoService: TransacaoService,
+    private router: Router, 
     private toastr: ToastrService
   ) { }
 
@@ -117,9 +119,9 @@ export class TransacaoComponent implements OnInit {
 
     this.transacaoService.adicionarTransacao(novaTransacao).subscribe({
       next: response => {
-        console.log('Transação criada com sucesso:', response);
         this.toastr.success('Transação criada com sucesso!', 'Sucesso');
         this.limparCamposFormulario();
+        this.router.navigate(['/']);
       },
       error: error => {
         console.error('Erro ao criar transação:', error);

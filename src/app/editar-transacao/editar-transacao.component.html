@@ -5,10 +5,20 @@
         <button class="botao-voltar" [routerLink]="['/']">
             <fa-icon [icon]="faArrowLeft"></fa-icon>
         </button>
+        
         <h2 class="flex-grow-1 text-center m-0">Editar ou excluir</h2>
-        <button class="botao-excluir" (click)="confirmarExclusao()">
+        
+        <button class="botao-excluir" (click)="abrirModalExclusao()">
           <fa-icon [icon]="faTrash"></fa-icon>
         </button>
+        
+        <app-modal-confirmacao
+          [titulo]="tituloModal" 
+          [mensagem]="mensagemModal" 
+          [mostraModal]="modalVisivel"
+          (confirmado)="confirmarExclusao()"
+          (cancelado)="fecharModal()">
+        </app-modal-confirmacao>
       </div>
 
       <form [formGroup]="transacaoForm">

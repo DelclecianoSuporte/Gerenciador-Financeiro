@@ -3,3 +3,49 @@
     margin-bottom: 15px;
     margin-top: 20px;
 }
+
+.legenda-container {
+    max-height: 200px; 
+    overflow-y: auto;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.cor-categoria {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.nome-categoria {
+    display: inline-block;
+    max-width: 100px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.legenda-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.legenda-lista li {
+    padding: 4px 0;
+    cursor: pointer; 
+}
+
+.legenda-lista li.selected {
+    background-color: #f0f0f0; 
+}
+
+.titulo-legenda {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+}
+

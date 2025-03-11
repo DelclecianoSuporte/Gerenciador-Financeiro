@@ -1,80 +1,81 @@
-<div class="card">
-    <div class="card-header">
-        <div class="data-nav">
-            <button (click)="voltaMes()" class="setinha">
-                <fa-icon [icon]="faLessThan"></fa-icon> 
-            </button>
-            
-            <span class="data-completa">
-                <span class="data-mes">{{ mesAnterior }}</span>
-                <span class="data-mes estado-atual">{{ mesAtual }}</span> / 
-                <span class="data-ano estado-atual">{{ anoAtual }}</span>
-                <span class="data-mes">{{ proximoMes }}</span>
-            </span>
-
-            <span class="data-reduzida">
-                <span class="data-mes estado-atual">{{ mesAtual }}</span> / 
-                <span class="data-ano estado-atual">{{ anoAtual }}</span>
-            </span>
-            
-            <button (click)="avancaMes()" class="setinha">
-                <fa-icon [icon]="faGreaterThan"></fa-icon>
-            </button>
-        </div>
-        
-        <div class="div-saldo-total">
-            <h3>Saldo previsto</h3>
-            <p class="saldo-total">
-                <ng-container *ngIf="valoresVisiveis; else ocultoSaldo">R$ {{ saldoPrevisto | number: '1.2-2' }}</ng-container>
-                <ng-template #ocultoSaldo>••••</ng-template>
-            </p>
-            <button (click)="alternarVisibilidadeValores()" class="card-visualiza btn">
-                <fa-icon [icon]="faEyeSlash" class="eye-icon"></fa-icon> 
-            </button>
-        </div>
-    </div>
-
-    <div class="card-body">
-        <div class="receitas">
-            <div class="receitas-conteudo">
-                <button class="btn botao-receita">
-                    <fa-icon [icon]="faArrowUp"></fa-icon>
-                </button>
-                <div>
-                    <p class="tipo-transacao">Receitas</p>
-                    <p class="valor-receitas">
-                        <ng-container *ngIf="valoresVisiveis; else ocultoReceitas">R$ {{ valorTotalReceitas | number: '1.2-2' }}</ng-container>
-                        <ng-template #ocultoReceitas>••••</ng-template>
-                    </p>
+<div class="raiz-pai">
+    <div class="conteudo-cards">
+        <div class="card">
+            <div class="card-header">
+                <div class="data-nav">
+                    <button (click)="voltaMes()" class="setinha">
+                        <fa-icon [icon]="faLessThan"></fa-icon>
+                    </button>
+                    <span class="data-completa">
+                        <span class="data-mes">{{ mesAnterior }}</span>
+                        <span class="data-mes estado-atual">{{ mesAtual }}</span> / 
+                        <span class="data-ano estado-atual">{{ anoAtual }}</span>
+                        <span class="data-mes">{{ proximoMes }}</span>
+                    </span>
+                    <span class="data-reduzida">
+                        <span class="data-mes estado-atual">{{ mesAtual }}</span> / 
+                        <span class="data-ano estado-atual">{{ anoAtual }}</span>
+                    </span>
+                    <button (click)="avancaMes()" class="setinha">
+                        <fa-icon [icon]="faGreaterThan"></fa-icon>
+                    </button>
                 </div>
+
+                <div class="div-saldo-total">
+                    <h3>Saldo previsto</h3>
+                    <p class="saldo-total">
+                        <ng-container *ngIf="valoresVisiveis; else ocultoSaldo">R$ {{ saldoPrevisto | number: '1.2-2' }}</ng-container>
+                        <ng-template #ocultoSaldo>••••</ng-template>
+                    </p>
+                    <button (click)="alternarVisibilidadeValores()" class="card-visualiza btn">
+                        <fa-icon [icon]="faEyeSlash" class="eye-icon"></fa-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="receitas">
+                    <div class="receitas-conteudo">
+                        <button class="btn botao-receita">
+                            <fa-icon [icon]="faArrowUp"></fa-icon>
+                        </button>
+                        <div>
+                            <p class="tipo-transacao">Receitas</p>
+                            <p class="valor-receitas">
+                                <ng-container *ngIf="valoresVisiveis; else ocultoReceitas">R$ {{ valorTotalReceitas | number: '1.2-2' }}</ng-container>
+                                <ng-template #ocultoReceitas>••••</ng-template>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="despesas">
+                    <div class="despesas-conteudo">
+                        <button class="btn botao-despesa">
+                            <fa-icon [icon]="faArrowDown"></fa-icon>
+                        </button>
+                        <div>
+                            <p class="tipo-transacao">Despesas</p>
+                            <p class="valor-despesas">
+                                <ng-container *ngIf="valoresVisiveis; else ocultoDespesas">R$ {{ valorTotalDespesas | number: '1.2-2' }}</ng-container>
+                                <ng-template #ocultoDespesas>••••</ng-template>
+                            </p>
+                        </div>
+                    </div>
+                </div>          
             </div>
         </div>
 
-        <div class="despesas">
-            <div class="despesas-conteudo">
-                <button class="btn botao-despesa">
-                    <fa-icon [icon]="faArrowDown"></fa-icon>
-                </button>
-                <div>
-                    <p class="tipo-transacao">Despesas</p>
-                    <p class="valor-despesas">
-                        <ng-container *ngIf="valoresVisiveis; else ocultoDespesas">R$ {{ valorTotalDespesas | number: '1.2-2' }}</ng-container>
-                        <ng-template #ocultoDespesas>••••</ng-template>
-                    </p>
-                </div>
-            </div>
-        </div>          
+        <div class="card-grafico">
+            <app-grafico-despesas 
+                [mes]="mesAtual$ | async" 
+                [ano]="anoAtual$ | async">
+            </app-grafico-despesas>
+        </div>
     </div>
-</div>
 
-<div class="card-grafico">
-    <app-grafico-despesas 
-        [mes]="mesAtual$ | async" 
-        [ano]="anoAtual$ | async">
-    </app-grafico-despesas>
-</div>
-
-<div class="rodape-home fixed-bottom bg-white">
-    <app-rodape></app-rodape>
+    <div class="rodape-home bg-white">
+        <app-rodape></app-rodape>
+    </div>
 </div>
 

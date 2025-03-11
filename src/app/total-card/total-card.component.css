@@ -123,6 +123,29 @@
     display: none;
 }
 
+/* Estilizando o conteudo todo do container e rodape */
+
+.raiz-pai {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.conteudo-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body,
+.card-grafico {
+    flex: 1;
+}
+
+.rodape-home {
+    background-color: transparent;
+}
+
 @media (max-width: 768px) {
     
     .data-nav {
@@ -146,7 +169,7 @@
         margin-top: 10px;
     }
 
-    /* cad body */
+    /* Conteudo do card body */
     .card-body {
         display: block;
     }
@@ -162,6 +185,7 @@
 
     .rodape-home {
         background-color: transparent !important;
+        margin-top: 50px;
     }
 }
 

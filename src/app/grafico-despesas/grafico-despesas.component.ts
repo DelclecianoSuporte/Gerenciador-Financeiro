@@ -34,29 +34,29 @@ export class GraficoDespesasComponent implements OnChanges {
 
   doughnutChartData: { name: string, value: number }[] = [];
   mensagemAviso: string = '';
+  categoriaSelecionada: string = '';
 
   constructor(private transacaoService: TransacaoService) { }
 
-  //Vou analisar como o grafico fica responsivo
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event: any): void {
-  //   this.atualizarTamanhoGrafico();
-  // }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.atualizarTamanhoGrafico();
+  }
 
-  // ngOnInit() {
-  //   this.atualizarTamanhoGrafico();
-  // }
+  ngOnInit() {
+    this.atualizarTamanhoGrafico();
+  }
 
-  // private atualizarTamanhoGrafico(): void {
-  //   const larguraTela = window.innerWidth;
+  private atualizarTamanhoGrafico(): void {
+    const larguraTela = window.innerWidth;
 
-  //   if (larguraTela < 768) {
-  //     this.view = [window.innerWidth - 20, 200]; 
-  //   }
-  //   else {
-  //     this.view = [700, 250];
-  //   }
-  // }
+    if (larguraTela < 768) {
+      this.view = [window.innerWidth - 20, 200]; 
+    }
+    else {
+      this.view = [700, 250];
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['mes'] || changes['ano']) {
@@ -103,5 +103,14 @@ export class GraficoDespesasComponent implements OnChanges {
       name: categoria,
       value: categorias[categoria]
     }));
+  }
+
+   selecionaCategoriaGrafico(event: any): void {
+    this.categoriaSelecionada = event.name;
+  }
+
+  retornaCategoriaComCor(categoria: string): string {
+    const categoriaIndex = this.doughnutChartData.findIndex(item => item.name === categoria);
+    return this.colorScheme.domain[categoriaIndex];
   }
 }

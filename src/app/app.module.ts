@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditarTransacaoComponent } from './editar-transacao/editar-transacao.component';
 import { ModalModule } from "ngx-bootstrap/modal";
+import { ModalConfirmacaoComponent } from './modal-confirmacao/modal-confirmacao.component';
 
 registerLocaleData(localePt);
 
@@ -33,6 +34,7 @@ registerLocaleData(localePt);
     GraficoDespesasComponent,
     RodapeComponent,
     EditarTransacaoComponent,
+    ModalConfirmacaoComponent,
   ],
   imports: [
     BrowserModule, 

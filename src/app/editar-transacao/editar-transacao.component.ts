@@ -4,7 +4,6 @@ import { TransacaoService } from '../services/transacao.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Transacao } from '../models/transacao';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CategoriaTransacao } from '../models/categoria-transacao.model';
 import { StatusTransacao } from '../models/status-transacao.model';
 import { FormaPagamento } from '../models/forma-pagamento.model';
 import { ToastrService } from 'ngx-toastr';
@@ -29,7 +28,15 @@ export class EditarTransacaoComponent implements OnInit {
   categoriasReceita: string[] = ["Emprestimo", "Salario", "Investimento", "RendaExtra", "Bonificacao"];
   categoriasDespesa: string[] = ["Saude", "Assinatura", "Transporte", "Alimentacao", "Supermercado", "Lazer", "Casa", "Compras", "Viagem"];
   
-  constructor(private route: ActivatedRoute, private transacaoService: TransacaoService,private formBuilder: FormBuilder,  private router: Router, private toastr: ToastrService) 
+  modalVisivel = false;
+  tituloModal = 'Confirmar Exclusão';
+  mensagemModal: string = '';
+
+  constructor(private route: ActivatedRoute, 
+    private transacaoService: TransacaoService,
+    private formBuilder: FormBuilder,  
+    private router: Router, 
+    private toastr: ToastrService) 
   {
     this.transacaoForm = this.formBuilder.group({
       tipo: [''],
@@ -154,28 +161,60 @@ export class EditarTransacaoComponent implements OnInit {
     } 
   }
 
-  confirmarExclusao(): void {
+  abrirModalExclusao() {
     const transacaoId = this.route.snapshot.paramMap.get('id');
   
     if (!transacaoId) {
       this.toastr.error('Erro: ID da transação não encontrado!');
       return;
     }
-
+  
     this.transacaoService.retornarPeloId(transacaoId).subscribe({
       next: (response) => {
         if (response.success) {
           const transacao = response.data;
-    
+  
           if (transacao.recorrente) {
-            if (confirm('Essa transação que você vai remover possui recorrência. Caso continue, as demais parcelas serão apagadas junto. Tem certeza disso?')) {
-              this.excluirTransacoesRecorrentes(transacaoId);
-            }
+            this.mensagemModal = 'Essa transação que você vai remover possui recorrência. Caso continue, as demais parcelas serão apagadas junto. Tem certeza disso?';
           } 
           else {
-            if (confirm('Você tem certeza que deseja excluir esta transação?')) {
-              this.excluirTransacao(transacaoId);
-            }
+            this.mensagemModal = 'Você tem certeza que deseja excluir esta transação?';
+          }
+  
+          this.modalVisivel = true;
+        } 
+        else {
+          this.toastr.error('Erro ao obter detalhes da transação!');
+        }
+      },
+      error: (error) => {
+        this.toastr.error('Erro ao buscar a transação: ' + error.message);
+      }
+    });
+  }
+
+  fecharModal() {
+    this.modalVisivel = false;
+  }
+
+  confirmarExclusao() {
+    const transacaoId = this.route.snapshot.paramMap.get('id');
+  
+    if (!transacaoId) {
+      this.toastr.error('Erro: ID da transação não encontrado!');
+      return;
+    }
+  
+    this.transacaoService.retornarPeloId(transacaoId).subscribe({
+      next: (response) => {
+        if (response.success) {
+          const transacao = response.data;
+  
+          if (transacao.recorrente) {
+            this.excluirTransacoesRecorrentes(transacaoId);
+          } 
+          else {
+            this.excluirTransacao(transacaoId);
           }
         } 
         else {

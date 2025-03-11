@@ -110,7 +110,6 @@ export class HistoricoComponent implements OnInit {
   opcaoFoiSelecionada(event: Event, option: string): void {
     event.preventDefault();
     this.opcaoSelecionada = option;
-    console.log('Tipo selecionado:', this.opcaoSelecionada);
     this.filtrarTransacoes();  
   }
 
