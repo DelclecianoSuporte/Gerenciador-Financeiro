@@ -88,7 +88,9 @@
                     [(ngModel)]="statusTransacao"
                     [class.is-invalid]="erros.statusTransacao">
                     <option value="" disabled selected>Selecione o status</option>
-                    <option *ngFor="let status of opcoesStatus" [value]="status">{{ status }}</option>
+                    <option *ngFor="let status of opcoesStatus" [value]="status">
+                        {{ getStatusDisplay(status) }}
+                    </option>
                 </select>
                 <div *ngIf="erros.quantidadeParcelas" class="invalid-feedback">
                     Por favor, selecione uma opção para o status.
@@ -111,15 +113,17 @@
             <div class="mb-3">
                 <label for="formaPagamento-transacao" class="form-label">Forma de Pagamento</label>
                 <select class="form-control" id="formaPagamento-transacao" name="formaPagamento-transacao"  
-                    [(ngModel)]="formaPagamentoTransacao"
-                    [class.is-invalid]="erros.formaPagamentoTransacao">
-                    <option value="" disabled selected>Selecione uma forma</option>
-                    <option *ngFor="let formaPagamento of opcoesFormaPagamento" [value]="formaPagamento">{{ formaPagamento }}</option>
+                  [(ngModel)]="formaPagamentoTransacao" [class.is-invalid]="erros.formaPagamentoTransacao">
+                  <option value="" disabled selected>Selecione uma forma</option>
+                  <option *ngFor="let formaPagamento of opcoesFormaPagamento" [value]="formaPagamento">
+                    {{ getFormaPagamentoDisplay(formaPagamento) }} 
+                  </option>
                 </select>
                 <div *ngIf="erros.formaPagamentoTransacao" class="invalid-feedback">
-                    Por favor, selecione uma forma de pagamento.
+                  Por favor, selecione uma forma de pagamento.
                 </div>
             </div>
+
             <div style="text-align: center;">
                 <button class="botao-transacao" (click)="criarTransacao()">
                     <fa-icon [icon]="faCheck"></fa-icon>

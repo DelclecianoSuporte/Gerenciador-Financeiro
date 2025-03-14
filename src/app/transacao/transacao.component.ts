@@ -7,6 +7,7 @@ import { FormaPagamento } from '../models/forma-pagamento.model';
 import { Transacao } from '../models/transacao';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { FormaPagamentoDisplay, StatusTransacaoDisplay } from '../models/display-mappings';
 
 @Component({
   selector: 'app-transacao',
@@ -43,6 +44,7 @@ export class TransacaoComponent implements OnInit {
   descricaoTransacao: string = ''; 
   dataTransacao: string = ''; 
   erros: any = {};
+  
 
   constructor(private transacaoService: TransacaoService,
     private router: Router, 
@@ -54,6 +56,16 @@ export class TransacaoComponent implements OnInit {
     this.opcoesCategoria = this.transacaoService.retornaOpcoesCategoria();
     this.opcoesFormaPagamento = this.transacaoService.retornaOpcoesFormaPagamento();
     this.parcelas = Array.from({ length: 12 }, (_, i) => i + 1);
+  }
+
+   // Alterando as opções do Select para ficar mais legivel exp:(NaoFoiPago = Não Foi Pago)
+   getStatusDisplay(status: string): string {
+    return StatusTransacaoDisplay[status as keyof typeof StatusTransacaoDisplay];
+  }
+
+  // Alterando as opções do Select para ficar mais legivel exp:(CartaoDeCredito = Cartão de Credito)
+  getFormaPagamentoDisplay(formaPagamento: string): string {
+    return FormaPagamentoDisplay[formaPagamento as keyof typeof FormaPagamentoDisplay];
   }
 
   verificaRecorrencia(event: any): void {

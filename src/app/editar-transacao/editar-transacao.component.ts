@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { StatusTransacao } from '../models/status-transacao.model';
 import { FormaPagamento } from '../models/forma-pagamento.model';
 import { ToastrService } from 'ngx-toastr';
+import { FormaPagamentoDisplay, StatusTransacaoDisplay } from '../models/display-mappings';
 
 @Component({
   selector: 'app-editar-transacao',
@@ -21,6 +22,8 @@ export class EditarTransacaoComponent implements OnInit {
   faTrash = faTrash;
 
   transacaoForm: FormGroup;
+  statusLegivel: { [key: string]: string } = StatusTransacaoDisplay; 
+  formaPagamentoLegivel: { [key: string]: string } = FormaPagamentoDisplay;
   statusEdicao = Object.values(StatusTransacao);
   formasPagamentoEdicao = Object.values(FormaPagamento);
   tiposTransacao: string[] = ['Receita', 'Despesa'];
@@ -72,7 +75,7 @@ export class EditarTransacaoComponent implements OnInit {
       descricao: transacao.descricao,
       recorrente: this.converterRecorrencia(transacao.recorrente),
       quantidadeParcelas: transacao.quantidadeParcelas !== undefined ? transacao.quantidadeParcelas : '',
-      status: transacao.status_Transacao,
+      status: transacao.status_Transacao, 
       categoria: transacao.categoria,
       formaPagamento: transacao.formaPagamento
     });

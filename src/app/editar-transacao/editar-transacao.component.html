@@ -58,7 +58,7 @@
           <label for="status-transacao" class="form-label">Status</label>
           <select formControlName="status" class="form-control" id="status-transacao">
             <option value="" disabled selected>Selecione o status</option>
-            <option *ngFor="let status of statusEdicao" [value]="status">{{ status }}</option>
+            <option *ngFor="let status of statusEdicao" [value]="status">{{ statusLegivel[status] }}</option>
           </select>
         </div>
       
@@ -74,7 +74,7 @@
           <label for="formaPagamento-transacao" class="form-label">Forma de Pagamento</label>
           <select formControlName="formaPagamento" class="form-control" id="formaPagamento-transacao">
             <option value="" disabled selected>Selecione uma forma</option>
-            <option *ngFor="let formaPagamento of formasPagamentoEdicao" [value]="formaPagamento">{{ formaPagamento }}</option>
+            <option *ngFor="let formaPagamento of formasPagamentoEdicao" [value]="formaPagamento">{{ formaPagamentoLegivel[formaPagamento] }}</option>
           </select>
         </div>
         
@@ -86,10 +86,6 @@
       </form>
    </div>
 </div>
-
-<!-- <div class="rodape-transacao">
-    <app-rodape></app-rodape>
-</div> -->
 
   
   

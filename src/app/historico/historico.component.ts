@@ -19,6 +19,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Transacao } from '../models/transacao';
 import { TransacaoService } from '../services/transacao.service';
+import { StatusTransacaoDisplay } from '../models/display-mappings';
 
 @Component({
   selector: 'app-historico',
@@ -169,6 +170,10 @@ export class HistoricoComponent implements OnInit {
     const dataFormatadaBr = dataFormatada.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
   
     return `${nomeReduzido}, ${dataFormatadaBr}`;
+  }
+
+  getStatusDisplay(status: string): string {
+    return StatusTransacaoDisplay[status as keyof typeof StatusTransacaoDisplay] || status; 
   }
   
 }

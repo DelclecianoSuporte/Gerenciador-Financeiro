@@ -13,28 +13,6 @@
         </button>
     </div>
 
-
-    <!-- <div class="card-header d-flex justify-content-between align-items-center">
-
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ opcaoSelecionada ? opcaoSelecionada : 'Tipo de Transação' }}
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="#" (click)="opcaoFoiSelecionada($event, 'Todas')">Todas as Transações</a></li>
-                <li><a class="dropdown-item" href="#" (click)="opcaoFoiSelecionada($event, 'Receitas')">Receitas</a></li>
-                <li><a class="dropdown-item" href="#" (click)="opcaoFoiSelecionada($event, 'Despesas')">Despesas</a></li>
-            </ul>
-        </div>
-
-        <div class="input-group" style="max-width: 300px;">
-            <input type="text" class="form-control rounded-input" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="button-search" [(ngModel)]="pesquisaPelaDescricao" (input)="PesquisarDescricao()">
-            <button class="btn no-border" type="button" id="button-search" style="margin-left: 10px;" (click)="ButaoDePesquisa()">
-              <fa-icon class="icone-lupa" [icon]="faMagnifyingGlass"></fa-icon>
-            </button>
-        </div>
-    </div> -->
-
     <div class="card-header d-flex justify-content-between align-items-center">
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,7 +49,7 @@
             </div>
             <div class="div-valor-historico ms-auto">
                 <span class="valor-historico">R$ {{ transacao.valor }}</span>
-                <span class="status-historico">{{ transacao.status_Transacao }}</span>
+                <span class="status-historico">{{ getStatusDisplay(transacao.status_Transacao) }}</span>
             </div>
         </div>
     </div>    
